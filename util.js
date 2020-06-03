@@ -5,7 +5,7 @@ import config from 'config'
  * @param Express request req
  * TODO: Implement multistore in OpenCart VS Bridge
  */
-export function multiStoreConfig(apiConfig, req) {
+export function multiStoreConfig (apiConfig, req) {
   let confCopy = Object.assign({}, apiConfig)
   let storeCode = ''
 
@@ -16,12 +16,11 @@ export function multiStoreConfig(apiConfig, req) {
     storeCode = req.query.storeCode
   }
 
-  if (storeCode && config.availableStores.indexOf(storeCode) >= 0)
-  {
+  if (storeCode && config.availableStores.indexOf(storeCode) >= 0) {
     if (config.opencart2['api_' + storeCode]) {
       confCopy = Object.assign({}, config.opencart2['api_' + storeCode])
     } else {
-      if (new RegExp("(/" + config.availableStores.join("|") + "/)", "gm").exec(confCopy.url) === null) {
+      if (new RegExp('(/' + config.availableStores.join('|') + '/)', 'gm').exec(confCopy.url) === null) {
         confCopy.url = (confCopy.url).replace(/(vsbridge)/gm, `${storeCode}/$1`);
       }
     }

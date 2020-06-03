@@ -2,7 +2,7 @@ import AbstractCartProxy from '../abstract/cart';
 import { multiStoreConfig } from './util';
 
 class CartProxy extends AbstractCartProxy {
-  constructor (config, req){
+  constructor (config, req) {
     const OpenCart2Client = require('./opencart-vsbridge-client').OpenCart2Client;
     super(config, req)
     this.api = OpenCart2Client(multiStoreConfig(config.opencart2.api, req));
@@ -16,10 +16,10 @@ class CartProxy extends AbstractCartProxy {
   delete (customerToken, cartId, cartItem) {
     return this.api.cart.delete(customerToken, cartId, cartItem);
   }
-  pull (customerToken, cartId,  params) {
+  pull (customerToken, cartId, params) {
     return this.api.cart.pull(customerToken, cartId, params);
   }
-  totals (customerToken, cartId,  params) {
+  totals (customerToken, cartId, params) {
     return this.api.cart.totals(customerToken, cartId, params);
   }
   getShippingMethods (customerToken, cartId, address) {

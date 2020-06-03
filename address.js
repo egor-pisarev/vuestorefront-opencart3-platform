@@ -1,8 +1,8 @@
 import AbstractAddressProxy from '../abstract/address'
-import {multiStoreConfig} from "./util";
+import {multiStoreConfig} from './util';
 
 class AddressProxy extends AbstractAddressProxy {
-  constructor (config, req){
+  constructor (config, req) {
     const OpenCart2Client = require('./opencart-vsbridge-client').OpenCart2Client;
     super(config, req)
     this.api = OpenCart2Client(multiStoreConfig(config.opencart2.api, req));

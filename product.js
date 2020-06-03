@@ -2,7 +2,7 @@ import AbstractProductProxy from '../abstract/product'
 import { multiStoreConfig } from './util'
 
 class ProductProxy extends AbstractProductProxy {
-  constructor (config, req){
+  constructor (config, req) {
     const OpenCart2Client = require('./opencart-vsbridge-client').OpenCart2Client;
     super(config, req)
     this.api = OpenCart2Client(multiStoreConfig(config.opencart2.api, req));

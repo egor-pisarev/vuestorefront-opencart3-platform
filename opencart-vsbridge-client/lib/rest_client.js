@@ -20,7 +20,7 @@ module.exports.RestClient = function (options) {
     secret: options.accessTokenSecret
   };
 
-  function apiCall(request_data, request_token = '') {
+  function apiCall (request_data, request_token = '') {
     logger.debug('Calling API endpoint: ' + request_data.method + ' ' + request_data.url + ' token: ' + request_token);
 
     logger.info({
@@ -28,17 +28,17 @@ module.exports.RestClient = function (options) {
       method: request_data.method,
       headers: request_token ? { 'Authorization': 'Bearer ' + request_token } : oauth.toHeader(oauth.authorize(request_data, token)),
       json: true,
-      body: request_data.body,
+      body: request_data.body
     });
-    /* eslint no-undef: off*/
-    return new Promise(function (resolve, reject) {
+    /* eslint no-undef: off */
+    return new Promise((resolve, reject) => {
       request({
         url: request_data.url,
         method: request_data.method,
         headers: request_token ? { 'Authorization': 'Bearer ' + request_token } : oauth.toHeader(oauth.authorize(request_data, token)),
         json: true,
-        body: request_data.body,
-      }, function (error, response, body) {
+        body: request_data.body
+      }, (error, response, body) => {
         logger.debug('Response received')
         if (error) {
           logger.error('Error occured: ' + error);
@@ -53,8 +53,7 @@ module.exports.RestClient = function (options) {
             errorMessage = 'HTTP ERROR ' + response.code;
           }
 
-          if (body && body.hasOwnProperty('result'))
-            errorMessage = errorString(body.result, body.hasOwnProperty('parameters') ? body.parameters : {});
+          if (body && body.hasOwnProperty('result')) { errorMessage = errorString(body.result, body.hasOwnProperty('parameters') ? body.parameters : {}); }
 
           logger.error('API call failed: ' + errorMessage);
           reject(errorMessage);
@@ -72,11 +71,11 @@ module.exports.RestClient = function (options) {
     })
   }
 
-  function httpCallSucceeded(response) {
+  function httpCallSucceeded (response) {
     return response.statusCode >= 200 && response.statusCode < 300;
   }
 
-  function errorString(message, parameters) {
+  function errorString (message, parameters) {
     if (parameters === null) {
       return message;
     }
@@ -104,7 +103,7 @@ module.exports.RestClient = function (options) {
     return apiCall(request_data, request_token);
   }
 
-  function createUrl(resourceUrl) {
+  function createUrl (resourceUrl) {
     return servelrUrl + '/' + resourceUrl;
   }
 

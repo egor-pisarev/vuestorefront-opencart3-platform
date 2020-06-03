@@ -1,4 +1,4 @@
-function isNumeric(val) {
+function isNumeric (val) {
   return Number(parseFloat(val)).toString() === val;
 }
 
@@ -6,7 +6,7 @@ module.exports = function (restClient) {
   let module = {};
   const urlPrefix = 'cart/';
   let url = urlPrefix;
-  function getResponse(data) {
+  function getResponse (data) {
     if (data.code === 200) {
       return data.result;
     }

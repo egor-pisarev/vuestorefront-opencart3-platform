@@ -2,7 +2,7 @@ import AbstractStockAlertProxy from '../abstract/stock_alert';
 import { multiStoreConfig } from './util';
 
 class StockAlertProxy extends AbstractStockAlertProxy {
-  constructor (config, req){
+  constructor (config, req) {
     const OpenCart2Client = require('./opencart-vsbridge-client').OpenCart2Client;
     super(config, req)
     this.api = OpenCart2Client(multiStoreConfig(config.opencart2.api, req));

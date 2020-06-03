@@ -17,10 +17,7 @@ module.exports.OpenCart2Client = function (options) {
     addMethods (key, module) {
       let client = RestClient(options);
       if (module) {
-        if (this[key])
-          this[key] = Object.assign(this[key], module(client));
-        else
-          this[key] = module(client);
+        if (this[key]) { this[key] = Object.assign(this[key], module(client)); } else { this[key] = module(client); }
       }
     }
   };

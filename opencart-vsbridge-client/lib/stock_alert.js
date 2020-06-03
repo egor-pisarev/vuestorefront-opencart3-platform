@@ -2,8 +2,8 @@ module.exports = function (restClient) {
   let module = {};
   const urlPrefix = 'stockalert/';
   let url = urlPrefix;
-  function getResponse(data){
-    if (data.code === 200){
+  function getResponse (data) {
+    if (data.code === 200) {
       return data.result;
     }
 
@@ -24,7 +24,7 @@ module.exports = function (restClient) {
       alertData.emailAddress = emailAddress
     }
 
-    return restClient.post(url, alertData).then((data)=> {
+    return restClient.post(url, alertData).then((data) => {
       return getResponse(data);
     });
   };

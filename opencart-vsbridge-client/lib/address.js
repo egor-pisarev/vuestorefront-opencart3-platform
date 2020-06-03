@@ -16,12 +16,12 @@ module.exports = function (restClient) {
     });
     // eslint-disable-next-line no-sequences
   },
-      module.update = function (customerToken, addressData) {
-        url += `update?token=${customerToken}`
-        return restClient.post(url, {address: addressData}).then((data) => {
-          return getResponse(data);
-        });
-      }
+  module.update = function (customerToken, addressData) {
+    url += `update?token=${customerToken}`
+    return restClient.post(url, {address: addressData}).then((data) => {
+      return getResponse(data);
+    });
+  }
   module.get = function (customerToken, addressId) {
     url += `get?token=${customerToken}&addressId=${addressId}`
     return restClient.get(url).then((data) => {
