@@ -33,7 +33,7 @@ module.exports.RestClient = function (options) {
     /* eslint no-undef: off */
     return new Promise((resolve, reject) => {
       request({
-        url: request_data.url,
+        url: encodeURI(request_data.url),
         method: request_data.method,
         headers: request_token ? { 'Authorization': 'Bearer ' + request_token } : oauth.toHeader(oauth.authorize(request_data, token)),
         json: true,
