@@ -23,18 +23,18 @@ class CartProxy extends AbstractCartProxy {
     return this.api.cart.totals(customerToken, cartId, params);
   }
   async getShippingMethods(customerToken, cartId, address) {
-    return [{ "carrier_code": "flat.flat", "method_code": "flat.flat", "carrier_title": "Доставка с фиксированной стоимостью доставки", "method_title": "Доставка с фиксированной стоимостью доставки", "amount": 0, "base_amount": 0, "available": true, "error_message": "", "price_excl_tax": 0, "price_incl_tax": 0 }]
+    // return [{ "carrier_code": "flat.flat", "method_code": "flat.flat", "carrier_title": "Доставка с фиксированной стоимостью доставки", "method_title": "Доставка с фиксированной стоимостью доставки", "amount": 0, "base_amount": 0, "available": true, "error_message": "", "price_excl_tax": 0, "price_incl_tax": 0 }]
     return this.api.cart.shippingMethods(customerToken, cartId, address);
   }
   async getPaymentMethods(customerToken, cartId) {
-    return [{"code":"bank_transfer","title":"Банковский перевод"},{"code":"cod","title":"Оплата при доставке"}]
+    // return [{"code":"bank_transfer","title":"Банковский перевод"},{"code":"cod","title":"Оплата при доставке"}]
     return this.api.cart.paymentMethods(customerToken, cartId);
   }
   async setShippingInformation(customerToken, cartId, address) {
-    return {
-      "payment_methods": await this.getPaymentMethods(customerToken, cartId),
-      "totals": await this.api.cart.totals(customerToken, cartId, address)
-    }
+    // return {
+    //   "payment_methods": await this.getPaymentMethods(customerToken, cartId),
+    //   "totals": await this.api.cart.totals(customerToken, cartId, address)
+    // }
     return this.api.cart.shippingInformation(customerToken, cartId, address);
   }
   collectTotals(customerToken, cartId, shippingMethod) {
